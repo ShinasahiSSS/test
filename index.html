@@ -1,14 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>テストサイト</title>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新旭サッカースポーツ少年団</title>
+<link rel="icon" href="favicon.png">
 
+<style>
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f5f5f5;
+}
+
+header{
+  background:#0b4da2;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+
+nav{
+  background:#083a7a;
+}
+
+nav ul{
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  list-style:none;
+  justify-content:center;
+}
+
+nav li{
+  padding:14px 20px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.hero{
+  background:#ddd;
+  height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+.section{
+  background:white;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:10px;
+}
+
+.section h2{
+  margin-top:0;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#fafafa;
+  padding:15px;
+  border-radius:8px;
+}
+
+footer{
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+@media(max-width:600px){
+  .hero{
+    font-size:20px;
+    height:200px;
+  }
+}
+</style>
+
+</head>
 <body>
 
-<h1>テストサイト</h1>
-<p>サッカーチームホームページテスト</p>
+<header>
+<h1>新旭サッカースポーツ少年団</h1>
+<p>Shinasahi Soccer Sports Club</p>
+</header>
+
+<nav>
+<ul>
+<li><a href="#">ホーム</a></li>
+<li><a href="#">チーム紹介</a></li>
+<li><a href="#">スケジュール</a></li>
+<li><a href="#">試合結果</a></li>
+<li><a href="#">写真</a></li>
+<li><a href="#">お問い合わせ</a></li>
+</ul>
+</nav>
+
+<div class="hero">
+チーム写真をここに入れる
+</div>
+
+<div class="container">
+
+<div class="section">
+<h2>⚽ 団員募集中</h2>
+<p>
+新旭サッカースポーツ少年団では新しい仲間を募集しています。<br>
+見学・体験はいつでも大歓迎です！
+</p>
+</div>
+
+<div class="section">
+<h2>今月の予定</h2>
+<img src="schedule.jpg" style="width:100%;max-width:600px;">
+</div>
+
+<div class="section">
+<h2>最近の試合結果</h2>
+<div class="grid">
+
+<div class="card">
+<h3>〇〇カップ</h3>
+<p>新旭 3 - 1 ○○</p>
+</div>
+
+<div class="card">
+<h3>練習試合</h3>
+<p>新旭 2 - 2 △△</p>
+</div>
+
+</div>
+</div>
+
+<div class="section">
+<h2>活動写真</h2>
+<div class="grid">
+<div class="card">写真1</div>
+<div class="card">写真2</div>
+<div class="card">写真3</div>
+</div>
+</div>
+
+</div>
+
+<footer>
+<p>© 新旭サッカースポーツ少年団</p>
+</footer>
 
 </body>
 </html>
