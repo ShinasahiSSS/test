@@ -39,8 +39,12 @@ nav a:hover{opacity:0.7}
 .staff-card{background:#fafafa;padding:15px;border-radius:10px;border:1px solid #eee;text-align:center}
 .staff-card img{width:100%;max-width:180px;border-radius:10px}
 
-.photo-viewer{text-align:center}
-.photo-viewer img{max-width:100%;border-radius:10px}
+.photo-main{text-align:center}
+.photo-main img{max-width:100%;border-radius:10px}
+
+.thumbnail-grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.thumbnail-grid img{width:100%;cursor:pointer;border-radius:6px;transition:0.2s}
+.thumbnail-grid img:hover{transform:scale(1.05)}
 
 footer{background:#000066;color:white;text-align:center;padding:20px;margin-top:30px}
 
@@ -139,10 +143,17 @@ nav li{border-top:1px solid rgba(255,255,255,0.2)}
 
 </div>
 
-<div class="section photo-viewer" id="photos">
+<div class="section" id="photos">
 <h2>活動写真</h2>
-<img id="photo" src="" alt="活動写真">
-<p>photoフォルダ内のJPEG画像を自動表示します</p>
+
+<div class="photo-main">
+<img id="mainPhoto" src="" alt="活動写真">
+</div>
+
+<div id="thumbs" class="thumbnail-grid"></div>
+
+<p style="text-align:center;margin-top:15px">photoフォルダ内のJPEG画像を自動表示</p>
+
 </div>
 
 </div>
@@ -158,34 +169,73 @@ const menu=document.getElementById("menu")
 menu.classList.toggle("show")
 }
 
-/* photo auto loader */
 let photos=[]
 let index=0
 
-fetch("photo/")
-.then(res=>res.text())
-.then(text=>{
-const parser=new DOMParser()
-const doc=parser.parseFromString(text,"text/html")
-const links=[...doc.querySelectorAll("a")]
+/*
+GitHub Pagesではフォルダ一覧を取得できないため
+photo/photos.json を読み込みます。
 
-links.forEach(link=>{
-const href=link.getAttribute("href")
-if(href && (href.toLowerCase().endsWith(".jpg") || href.toLowerCase().endsWith(".jpeg"))){
-photos.push("photo/"+href)
-}
+photos.json 例
+[
+ "photo/IMG_001.jpg",
+ "photo/game.jpg",
+ "photo/practice.jpeg"
+]
+*/
+
+/*
+GitHub Pagesでphotoフォルダ内の画像を自動取得する方法
+GitHub APIを使ってリポジトリのフォルダ一覧を取得します
+
+最初にこの2つだけ自分のリポジトリ名に変更してください
+*/
+
+const OWNER = "YOUR_GITHUB_ID"
+const REPO = "YOUR_REPOSITORY_NAME"
+
+const api = `https://api.github.com/repos/${OWNER}/${REPO}/contents/photo`
+
+fetch(api)
+.then(r=>r.json())
+.then(files=>{
+
+photos = files
+.filter(f => {
+const name = f.name.toLowerCase()
+return name.endsWith(".jpg") || name.endsWith(".jpeg")
 })
+.map(f => f.download_url)
 
 if(photos.length>0){
-document.getElementById("photo").src=photos[0]
+showPhoto(0)
+createThumbs()
 setInterval(nextPhoto,3000)
 }
+
 })
+
+function showPhoto(i){
+index=i
+const main=document.getElementById("mainPhoto")
+main.src=photos[index]
+}
 
 function nextPhoto(){
 index++
 if(index>=photos.length){index=0}
-document.getElementById("photo").src=photos[index]
+showPhoto(index)
+}
+
+function createThumbs(){
+const box=document.getElementById("thumbs")
+
+photos.forEach((p,i)=>{
+const img=document.createElement("img")
+img.src=p
+img.onclick=()=>showPhoto(i)
+box.appendChild(img)
+})
 }
 
 </script>
