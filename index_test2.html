@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>新旭サッカースポーツ少年団 | 公式サイト</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
@@ -15,12 +16,12 @@
 body{
 font-family:'Noto Sans JP',sans-serif;
 background:#0b0f1a;
-color:#fff;
+color:white;
 }
 
-a{text-decoration:none;color:inherit;}
+a{text-decoration:none;color:inherit}
 
-/* ---------- ヘッダー ---------- */
+/* header */
 
 header{
 position:fixed;
@@ -39,239 +40,189 @@ align-items:center;
 padding:15px 20px;
 }
 
-.logo{font-weight:900;}
+.logo{font-weight:900}
 
 .nav ul{
 display:flex;
 gap:25px;
-list-style:none;
+list-style:none
 }
 
 .menu-toggle{
 display:none;
 font-size:26px;
-cursor:pointer;
+cursor:pointer
 }
 
-/* ---------- ヒーロー（パララックス） ---------- */
+/* hero */
 
 .hero{
-
 height:100vh;
 
 background:
-linear-gradient(rgba(0,0,40,0.75),rgba(0,0,40,0.9)),
+linear-gradient(rgba(0,0,40,0.7),rgba(0,0,40,0.9)),
 url("image/anime.jpg");
 
 background-size:cover;
 background-position:center;
-background-attachment:fixed; /* パララックス */
+background-attachment:fixed;
 
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
-padding:20px;
-position:relative;
-
-overflow:hidden;
-
 }
-
-/* エンブレム透かし */
-
-.hero::after{
-
-content:"";
-
-position:absolute;
-
-width:700px;
-height:700px;
-
-background:url("emblem.png") center/contain no-repeat;
-
-opacity:0.06;
-
-bottom:-120px;
-right:-120px;
-
-pointer-events:none;
-
-}
-
-/* ---------- ヒーローテキスト ---------- */
 
 .hero h1{
 font-size:48px;
-line-height:1.4;
 font-weight:900;
-letter-spacing:2px;
+letter-spacing:2px
 }
 
 .hero p{
-margin-top:25px;
+margin-top:20px;
 font-size:18px;
-opacity:0.9;
+opacity:.9
 }
 
 .cta{
-margin-top:40px;
+margin-top:40px
 }
 
 .cta a{
-display:inline-block;
-padding:14px 30px;
 background:#00d4ff;
 color:#000;
+padding:14px 30px;
 border-radius:30px;
 font-weight:700;
-transition:0.3s;
+display:inline-block
 }
 
-.cta a:hover{
-background:#fff;
-}
-
-/* ---------- セクション ---------- */
+/* section */
 
 section{
 padding:100px 20px;
 max-width:1000px;
 margin:auto;
-position:relative;
+position:relative
 }
 
-/* エンブレム透かし（全体） */
-
 section::before{
-
 content:"";
-
 position:absolute;
-
 width:600px;
 height:600px;
-
 background:url("emblem.png") center/contain no-repeat;
-
-opacity:0.03;
-
+opacity:.03;
 top:50%;
 left:50%;
-
 transform:translate(-50%,-50%);
-
-pointer-events:none;
-
+pointer-events:none
 }
 
 section h2{
 font-size:28px;
 margin-bottom:30px;
 border-left:5px solid #00d4ff;
-padding-left:15px;
-position:relative;
-z-index:2;
-}
-
-section h3{
-font-size:24px;
-margin-top:25px;
+padding-left:15px
 }
 
 .info-box{
 background:#12182a;
 padding:25px;
 border-radius:12px;
-line-height:1.8;
-position:relative;
-z-index:2;
+line-height:1.8
 }
 
-/* ---------- スタッフ ---------- */
+/* staff */
 
 .staff-grid{
-
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:30px;
-margin-top:20px;
-text-align:center;
-
+text-align:center
 }
 
 .staff img{
 width:100%;
-border-radius:10px;
+border-radius:10px
 }
 
 .staff-name{
 margin-top:10px;
-font-weight:700;
+font-weight:700
 }
 
-/* ---------- スケジュール ---------- */
+/* schedule */
 
 .schedule-table{
 width:100%;
 border-collapse:collapse;
-text-align:center;
+text-align:center
 }
 
 .schedule-table th,
 .schedule-table td{
 border:1px solid #2a324f;
-padding:12px;
+padding:12px
 }
 
 .schedule-table th{
-background:#1a2340;
+background:#1a2340
 }
 
-/* ---------- 月予定 ---------- */
+/* monthly */
 
 #monthly img{
 width:100%;
 max-width:800px;
 border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
+box-shadow:0 10px 30px rgba(0,0,0,.5)
 }
 
-/* ---------- 写真 ---------- */
+/* photos */
 
-.photo-grid{
+.photo-main{
+text-align:center;
+margin-bottom:20px
+}
+
+.photo-main img{
+max-width:100%;
+border-radius:10px
+}
+
+.thumbnail-grid{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+gap:10px
 }
 
-.photo-grid img{
+.thumbnail-grid img{
 width:100%;
-border-radius:10px;
-transition:0.3s;
+cursor:pointer;
+border-radius:6px;
+transition:.2s
 }
 
-.photo-grid img:hover{
-transform:scale(1.05);
+.thumbnail-grid img:hover{
+transform:scale(1.05)
 }
 
-/* ---------- フッター ---------- */
+/* footer */
 
 footer{
 background:#050814;
 text-align:center;
 padding:30px;
-color:#aaa;
+color:#aaa
 }
 
-/* ---------- スマホ ---------- */
+/* mobile */
 
 @media(max-width:768px){
 
-.hero{
-background-attachment:scroll; /* スマホはパララックスOFF */
-}
+.hero{background-attachment:scroll}
 
 .nav ul{
 position:absolute;
@@ -281,33 +232,17 @@ background:#111a30;
 flex-direction:column;
 width:200px;
 display:none;
-padding:20px;
+padding:20px
 }
 
-.nav ul.active{
-display:flex;
-}
+.nav ul.active{display:flex}
 
-.menu-toggle{
-display:block;
-}
+.menu-toggle{display:block}
 
-.hero h1{
-font-size:28px;
-}
-
-.hero p{
-font-size:16px;
-}
+.hero h1{font-size:28px}
 
 .staff-grid{
-grid-template-columns:1fr;
-}
-
-.schedule-table th,
-.schedule-table td{
-font-size:14px;
-padding:8px;
+grid-template-columns:1fr
 }
 
 }
@@ -326,38 +261,26 @@ padding:8px;
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
 <ul id="menu">
-
 <li><a href="#about">チーム紹介</a></li>
-
-<li><a href="#practice">練習について</a></li>
-
+<li><a href="#practice">練習</a></li>
 <li><a href="#schedule">スケジュール</a></li>
-
-<li><a href="#monthly">今月の予定</a></li>
-
 <li><a href="#photos">活動写真</a></li>
-
 <li><a href="#contact">体験参加</a></li>
-
 </ul>
 
 </div>
 
 </header>
 
-<!-- ヒーロー -->
+<!-- hero -->
 
 <div class="hero">
 
 <div>
 
-<h1>
-この数年間が土台になる。
-</h1>
+<h1>この数年間が土台になる。</h1>
 
-<p>
-勝敗よりも、折れない心を。
-</p>
+<p>勝敗よりも、折れない心を。</p>
 
 <div class="cta">
 <a href="#contact">体験に行ってみる</a>
@@ -367,4 +290,128 @@ padding:8px;
 
 </div>
 
-<!-- 以下は今までと同じなので省略 -->
+<!-- about -->
+
+<section id="about">
+
+<h2>チーム紹介</h2>
+
+<div class="info-box">
+
+<p>技術だけでなく、あいさつ・努力・仲間を思いやる心を大切にしています。</p>
+
+</div>
+
+</section>
+
+<!-- staff -->
+
+<section>
+
+<h2>スタッフ</h2>
+
+<div class="staff-grid">
+
+<div class="staff">
+<img src="staff/staff1.jpg">
+<div class="staff-name">代表・山本</div>
+</div>
+
+<div class="staff">
+<img src="staff/staff2.jpg">
+<div class="staff-name">監督</div>
+</div>
+
+<div class="staff">
+<img src="staff/staff3.jpg">
+<div class="staff-name">コーチ</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- photos -->
+
+<section id="photos">
+
+<h2>活動写真</h2>
+
+<div class="photo-main">
+<img id="mainPhoto">
+</div>
+
+<div id="thumbs" class="thumbnail-grid"></div>
+
+</section>
+
+<footer>
+
+© 2026 新旭サッカースポーツ少年団
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active")
+}
+
+let photos=[]
+let index=0
+
+const OWNER="ShinasahiSSS"
+const REPO="test"
+
+const api=`https://api.github.com/repos/${OWNER}/${REPO}/contents/photo`
+
+fetch(api)
+.then(r=>r.json())
+.then(files=>{
+
+photos=files
+.filter(f=>{
+const name=f.name.toLowerCase()
+return name.endsWith(".jpg")||name.endsWith(".jpeg")
+})
+.map(f=>f.download_url)
+
+if(photos.length>0){
+showPhoto(0)
+createThumbs()
+setInterval(nextPhoto,3000)
+}
+
+})
+
+function showPhoto(i){
+index=i
+document.getElementById("mainPhoto").src=photos[index]
+}
+
+function nextPhoto(){
+index++
+if(index>=photos.length){index=0}
+showPhoto(index)
+}
+
+function createThumbs(){
+
+const box=document.getElementById("thumbs")
+
+photos.forEach((p,i)=>{
+
+const img=document.createElement("img")
+img.src=p
+img.onclick=()=>showPhoto(i)
+
+box.appendChild(img)
+
+})
+
+}
+
+</script>
+
+</body>
+</html>
