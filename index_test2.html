@@ -7,6 +7,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="icon" href="emblem.png">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 body{font-family:'Noto Sans JP',sans-serif;background:#0b0f1a;color:#fff;}
@@ -78,26 +79,40 @@ font-size:28px;margin-bottom:30px;
 border-left:5px solid #00d4ff;
 padding-left:15px;
 }
-	
+
 section h3{
 font-size:24px;
+margin-top:25px;
 }
-	
 
-.staff-table{
-width:100%;
-text-align:center;
-}
-.staff-table th{
-background:#1a2340;
-}
-	
 .info-box{
 background:#12182a;
 padding:25px;
 border-radius:12px;
 line-height:1.8;
 }
+
+/* スタッフ */
+
+.staff-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:20px;
+text-align:center;
+}
+
+.staff img{
+width:100%;
+border-radius:10px;
+}
+
+.staff-name{
+margin-top:10px;
+font-weight:700;
+}
+
+/* スケジュール */
 
 .schedule-table{
 width:100%;
@@ -115,12 +130,34 @@ padding:12px;
 background:#1a2340;
 }
 
+/* 月予定 */
+
 #monthly img{
 width:100%;
 max-width:800px;
 border-radius:12px;
 box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
+
+/* 活動写真 */
+
+.photo-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+gap:20px;
+}
+
+.photo-grid img{
+width:100%;
+border-radius:10px;
+transition:0.3s;
+}
+
+.photo-grid img:hover{
+transform:scale(1.05);
+}
+
+/* フッター */
 
 footer{
 background:#050814;
@@ -129,8 +166,10 @@ padding:30px;
 color:#aaa;
 }
 
-/* スマホ対応 */
+/* スマホ */
+
 @media(max-width:768px){
+
 .nav ul{
 position:absolute;
 top:60px;
@@ -141,15 +180,24 @@ width:200px;
 display:none;
 padding:20px;
 }
+
 .nav ul.active{display:flex;}
+
 .menu-toggle{display:block;}
+
 .hero h1{font-size:28px;}
 .hero p{font-size:16px;}
+
 .schedule-table th,
 .schedule-table td{
 font-size:14px;
 padding:8px;
 }
+
+.staff-grid{
+grid-template-columns:1fr;
+}
+
 }
 </style>
 </head>
@@ -159,23 +207,31 @@ padding:8px;
 <header>
 <div class="nav">
 <div class="logo">新旭サッカースポーツ少年団</div>
+
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
 <ul id="menu">
 <li><a href="#about">チーム紹介</a></li>
 <li><a href="#practice">練習について</a></li>
 <li><a href="#schedule">スケジュール</a></li>
 <li><a href="#monthly">今月の予定</a></li>
+<li><a href="#photos">活動写真</a></li>
 <li><a href="#contact">体験参加</a></li>
 </ul>
 </div>
 </header>
 
+
 <!-- ヒーロー -->
+
 <div class="hero">
+
 <div>
+
 <h1>
 この数年間が土台になる。
 </h1>
+
 <p>
 勝敗よりも、折れない心を。
 </p>
@@ -187,134 +243,258 @@ padding:8px;
 </div>
 </div>
 
+
 <!-- チーム紹介 -->
+
 <section id="about">
+
 <h2>チーム紹介</h2>
+
 <div class="info-box">
+
 <p>技術向上だけでなく、あいさつ、努力、仲間を思いやる心を大切にしています。</p>
+
 <p>小さな成功体験の積み重ねが、やがて大きな自信へとつながります。</p>
-	
+
+
 <h3>指導理念</h3>
-<p>・サッカーは"遊び"。楽しくなければ何の意味もない<br>
+
+<p>
+
+・サッカーは"遊び"。楽しくなければ何の意味もない<br>
+
 ・フェアプレーで戦う<br>
+
 ・誰にでも挨拶する<br>
-・スポーツ少年団を通し、地域・社会に貢献する<br></p>
+
+・スポーツ少年団を通し、地域・社会に貢献する
+
+</p>
+
+
 <h3>指導方針</h3>
-<p>・目標を達成するためにクリエイティブな選手の育成<br>
+
+<p>
+
+・目標を達成するためにクリエイティブな選手の育成<br>
+
 ・指導者が子供からサッカーの楽しみを奪う事の無いよう留意<br>
-・持ち上がり方式により基本から戦術にいたるまで一貫指導を目標<br></p>	
+
+・持ち上がり方式により基本から戦術にいたるまで一貫指導を目標
+
+</p>
+
 
 <h3>スタッフ</h3>
-<tr>
-<th><img src="staff/staff1.jpg"></th>
-<th><img src="staff/staff2.jpg"></th>
-<th><img src="staff/staff3.jpg"></th>
-<th><img src="staff/staff4.jpg"></th>
-</tr>
-<tr>
-<td>代表・山本</td>
-<td>監督・水谷</td>
-<td>コーチ・宮本</td>
-<td>コーチ・前川</td>
-</tr>
-<tr>
-<td><img src="staff/staff5.jpg"></td>
-<td><img src="staff/staff6.jpg"></td>
-<td><img src="staff/staff7.jpg"></td>
-<td></td>
-</tr>	
-<tr>
-<td>コーチ・山本</td>
-<td>コーチ・平井</td>
-<td>・・・</td>
-<td>・・・</td>
-</td>
-</tr>
+
+<div class="staff-grid">
+
+<div class="staff">
+<img src="staff/staff1.jpg">
+<div class="staff-name">代表・山本</div>
 </div>
 
-<!-- 練習について -->
-<section id="practice">
-<h2>練習について</h2>
-<div class="info-box">
-<p><strong>練習日：</strong> 土曜日・日曜日（固定）</p>
-<p><strong>対象：</strong> 年長〜小学生</p>
-<p>※年長は体験参加となります（正式入団は小学生から）</p>
-<p>低学年は試合が少ないため、ほぼ毎週決まった時間に練習を行っています。</p>
+<div class="staff">
+<img src="staff/staff2.jpg">
+<div class="staff-name">監督・水谷</div>
 </div>
+
+<div class="staff">
+<img src="staff/staff3.jpg">
+<div class="staff-name">コーチ・宮本</div>
+</div>
+
+<div class="staff">
+<img src="staff/staff4.jpg">
+<div class="staff-name">コーチ・前川</div>
+</div>
+
+<div class="staff">
+<img src="staff/staff5.jpg">
+<div class="staff-name">コーチ・山本</div>
+</div>
+
+<div class="staff">
+<img src="staff/staff6.jpg">
+<div class="staff-name">コーチ・平井</div>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- 固定スケジュール -->
-<section id="schedule">
-<h2>通常スケジュール</h2>
+
+<!-- 練習 -->
+
+<section id="practice">
+
+<h2>練習について</h2>
+
 <div class="info-box">
+
+<p><strong>練習日：</strong> 土曜日・日曜日（固定）</p>
+
+<p><strong>対象：</strong> 年長〜小学生</p>
+
+<p>※年長は体験参加となります（正式入団は小学生から）</p>
+
+<p>低学年は試合が少ないため、ほぼ毎週決まった時間に練習を行っています。</p>
+
+</div>
+
+</section>
+
+
+<!-- 通常スケジュール -->
+
+<section id="schedule">
+
+<h2>通常スケジュール</h2>
+
+<div class="info-box">
+
 <table class="schedule-table">
+
 <tr>
 <th>曜日</th>
 <th>時間</th>
 <th>場所</th>
 <th>内容</th>
 </tr>
+
 <tr>
 <td>土曜日</td>
 <td>9:00〜11:30</td>
 <td>新旭北小学校グラウンド</td>
 <td>通常練習（大会の場合あり）</td>
 </tr>
+
 <tr>
 <td>日曜日</td>
 <td>9:00〜11:30</td>
-<td>新旭北小学校グラウンド<br>
-	（雨天時：新旭南小体育館）
+<td>
+新旭北小学校グラウンド<br>
+（雨天時：新旭南小体育館）
 </td>
 <td>通常練習（大会の場合あり）</td>
 </tr>
+
 <tr>
 <td>平日（月・水・木曜日）</td>
 <td>19:00〜20:00</td>
 <td>森林スポーツ公園、新旭南小学校</td>
 <td>ナイター練習</td>
-</tr></table>
+</tr>
+
+</table>
+
 <p style="margin-top:20px;font-size:14px;opacity:0.8;">
 ※天候や大会により変更になる場合があります。
 </p>
+
 </div>
+
 </section>
 
-<!-- 今月の予定（画像更新型） -->
+
+<!-- 今月の予定 -->
+
 <section id="monthly">
+
 <h2>📅 今月の予定</h2>
+
 <div class="info-box" style="text-align:center;">
-<img src="image/schedule.jpg" alt="今月の予定">
-<p style="margin-top:15px;font-size:14px;opacity:0.8;">
-</p>
+
+<img src="image/schedule.jpg">
+
 </div>
+
 </section>
 
-<!-- 体験参加 -->
+
+<!-- 活動写真 -->
+
+<section id="photos">
+
+<h2>📸 活動写真</h2>
+
+<div class="info-box">
+
+<div class="photo-grid" id="photoGrid"></div>
+
+</div>
+
+</section>
+
+
+<!-- 体験 -->
+
 <section id="contact">
+
 <h2>体験参加について</h2>
+
 <div class="info-box">
 
 <h3>新入団員随時募集中です！！</h3>
-<p>まずは体験として土・日の練習に参加してみませんか？<br>
-事前連絡なしでお気軽に直接北小Grにお越しいただいて構いません！</p>
+
+<p>
+まずは体験として土・日の練習に参加してみませんか？<br>
+事前連絡なしでお気軽に直接北小Grにお越しいただいて構いません！
+</p>
+
 <p>
 ご不明点があればお気軽にお電話ください。
 </p>
+
 <p style="margin-top:15px;">
 📞 090-1593-5655（代表：山本）
 </p>
+
 </div>
+
 </section>
 
+
 <footer>
+
 © 2026 新旭サッカースポーツ少年団
+
 </footer>
 
+
 <script>
+
 function toggleMenu(){
 document.getElementById("menu").classList.toggle("active");
 }
+
+
+/* 写真API取得 */
+
+async function loadPhotos(){
+
+const res = await fetch("/api/photos");
+
+const photos = await res.json();
+
+const grid = document.getElementById("photoGrid");
+
+photos.forEach(src=>{
+
+const img=document.createElement("img");
+
+img.src=src;
+
+grid.appendChild(img);
+
+});
+
+}
+
+loadPhotos();
+
 </script>
 
 </body>
