@@ -192,6 +192,36 @@ height:auto;}
 white-space:pre-line;
 line-height:1.8;
 }
+
+.gallery{
+max-width:900px;
+margin:auto;
+}
+
+.main-photo{
+text-align:center;
+margin-bottom:20px;
+}
+
+.main-photo img{
+width:100%;
+max-height:500px;
+object-fit:cover;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.photo-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+gap:10px;
+}
+
+.photo-grid img{
+cursor:pointer;
+height:90px;
+object-fit:cover;
+}
    
 </style>
 </head>
@@ -358,7 +388,13 @@ line-height:1.8;
 <section id="photos">
 <h2>📸 活動写真</h2>
 <div class="info-box">
+<div class="gallery">
+<div class="main-photo">
+<img id="mainPhoto">
+</div>
 <div class="photo-grid" id="photoGrid"></div>
+
+</div>
 </div>
 </section>
    
@@ -397,36 +433,57 @@ const OWNER="ShinasahiSSS";
 const REPO="test";
 const PATH="photo";
 
+let photos=[];
+let current=0;
+let slideTimer=null;
+
 async function loadPhotos(){
 
 try{
 
 const api=`https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`;
-
 const res=await fetch(api);
-
 const files=await res.json();
+
+photos = files
+.filter(file=>file.name.match(/\.(jpg|jpeg|png|webp)$/i))
+.map(file=>file.download_url);
 
 const grid=document.getElementById("photoGrid");
 
 grid.innerHTML="";
 
-files
-.filter(file=>file.name.match(/\.(jpg|jpeg|png|webp)$/i))
-.forEach(file=>{
+photos.forEach((url,i)=>{
 
 const img=document.createElement("img");
+img.src=url;
 
-img.src=file.download_url;
-
-img.loading="lazy";
+img.onclick=()=>{
+showPhoto(i);
+};
 
 grid.appendChild(img);
 
 });
+
+showPhoto(0);
+startSlide();
+
 }catch(e){
 console.error("写真取得エラー",e);
 }
+}
+function showPhoto(index){
+current=index;
+document.getElementById("mainPhoto").src=photos[index];
+
+}
+function startSlide(){
+slideTimer=setInterval(()=>{
+current++;
+if(current>=photos.length) current=0;
+showPhoto(current);
+},4000);
 }
 loadPhotos();
 
