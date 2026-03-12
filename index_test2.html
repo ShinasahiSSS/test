@@ -180,7 +180,7 @@ grid-template-columns:1fr;}
 position:fixed;
 right:20px;
 bottom:20px;
-z-index:1;
+z-index:-1;
 pointer-events:none;
 opacity:0.40}
 
@@ -209,12 +209,6 @@ max-height:500px;
 object-fit:cover;
 border-radius:12px;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
-}
-
-.photo-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
-gap:10px;
 }
 
 .photo-grid img{
@@ -461,22 +455,20 @@ img.src=url;
 img.onclick=()=>{
 showPhoto(i);
 };
-
 grid.appendChild(img);
-
 });
 
 showPhoto(0);
 startSlide();
-
 }catch(e){
 console.error("写真取得エラー",e);
 }
 }
 function showPhoto(index){
+clearInterval(slideTimer); // 自動スライド停止
 current=index;
 document.getElementById("mainPhoto").src=photos[index];
-
+startSlide(); // 再スタート
 }
 function startSlide(){
 slideTimer=setInterval(()=>{
