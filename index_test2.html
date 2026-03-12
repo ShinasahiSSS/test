@@ -63,16 +63,14 @@ background:#00d4ff;
 color:#000;
 border-radius:30px;
 font-weight:700;
-transition:0.3s;
-}
+transition:0.3s;}
 
 .cta a:hover{background:#fff;}
 
 section{
 padding:100px 20px;
 max-width:1000px;
-margin:auto;
-}
+margin:auto;}
 
 section h2{
 font-size:28px;margin-bottom:30px;
@@ -175,7 +173,6 @@ padding:8px;}
 
 .staff-grid{
 grid-template-columns:1fr;}
-
 }
 
 /* エンブレム透かし */
@@ -185,12 +182,15 @@ right:20px;
 bottom:20px;
 z-index:1;
 pointer-events:none;
-opacity:0.40
-}
+opacity:0.40}
 
 .watermark img{
 width:200px;
-height:auto;
+height:auto;}
+
+#news-content{
+white-space:pre-line;
+line-height:1.8;
 }
    
 </style>
@@ -205,6 +205,7 @@ height:auto;
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
 <ul id="menu">
+<li><a href="#news">お知らせ</a></li>
 <li><a href="#about">チーム紹介</a></li>
 <li><a href="#practice">練習について</a></li>
 <li><a href="#schedule">スケジュール</a></li>
@@ -227,7 +228,14 @@ height:auto;
 </div>
 </div>
 </div>
+<!お知らせ>
+<section id="news">
+<h2>📢 お知らせ</h2>
+<div class="info-box">
+<div id="news-content">読み込み中...</div>
+</div>
 
+</section>   
 <!-- チーム紹介 -->
 <section id="about">
 <h2>チーム紹介</h2>
@@ -422,6 +430,14 @@ console.error("写真取得エラー",e);
 }
 loadPhotos();
 
+/* お知らせ */
+
+fetch("https://raw.githubusercontent.com/ShinasahiSSS/test/main/memo.txt")
+.then(res=>res.text())
+.then(data=>{
+document.getElementById("news-content").innerText=data;
+});
+   
 </script>
 
 </body>
