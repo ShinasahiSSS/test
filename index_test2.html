@@ -442,6 +442,7 @@ const res=await fetch(api);
 const files=await res.json();
 
 photos = files
+.filter(file=>file.type==="file")
 .filter(file=>file.name.match(/\.(jpg|jpeg|png|webp)$/i))
 .map(file=>file.download_url);
 
