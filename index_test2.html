@@ -219,6 +219,20 @@ height:90px;
 object-fit:cover;
 }
    
+body::before{
+content:"";
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:70vw;
+height:70vw;
+background:url("sukashi.png") no-repeat center;
+background-size:contain;
+opacity:0.06;
+pointer-events:none;
+z-index:-1;
+}   
 </style>
 </head>
 
@@ -410,9 +424,6 @@ object-fit:cover;
 <footer>
 
 © 2026 新旭サッカースポーツ少年団
-<div class="watermark">
-<img src="sukashi.png">
-</div>
 </footer>
 
 
