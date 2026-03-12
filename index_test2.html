@@ -234,8 +234,9 @@ background:url("sukashi.png") no-repeat center;
 background-size:contain;
 opacity:0.06;
 pointer-events:none;
-z-index:-1;
-}   
+z-index:-1;}   
+.main-photo img{
+transition:opacity 0.4s;}
 </style>
 </head>
 
@@ -480,13 +481,14 @@ console.error("写真取得エラー",e);
 }
 }
 function showPhoto(index){
-clearInterval(slideTimer); // 自動スライド停止
-current=index;
-document.getElementById("mainPhoto").src=photos[index];
-startSlide(); // 再スタート
-}
-loadPhotos();
+const main=document.getElementById("mainPhoto");
+main.style.opacity=0;
+setTimeout(()=>{
+main.src=photos[index];
+main.style.opacity=1;
+},200);
 
+}
 /* お知らせ */
 
 fetch("https://raw.githubusercontent.com/ShinasahiSSS/test/main/memo.txt")
@@ -494,6 +496,8 @@ fetch("https://raw.githubusercontent.com/ShinasahiSSS/test/main/memo.txt")
 .then(data=>{
 document.getElementById("news-content").innerText=data;
 });
+
+   
    
 </script>
 
